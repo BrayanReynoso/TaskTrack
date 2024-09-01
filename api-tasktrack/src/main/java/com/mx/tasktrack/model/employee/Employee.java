@@ -1,6 +1,9 @@
 package com.mx.tasktrack.model.employee;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.mx.tasktrack.model.assignment.Assignment;
 import com.mx.tasktrack.model.department.Department;
 import jakarta.persistence.*;
 import lombok.*;
@@ -44,9 +47,9 @@ public class Employee {
     */
     @ManyToOne
     @JoinColumn(name = "department_id")
-    @JsonManagedReference
     private Department department;
 
     @OneToMany(mappedBy = "employee")
-    private List<Employee> assignments;
+    @JsonBackReference
+    private List<Assignment> assignments;
 }

@@ -1,5 +1,6 @@
 package com.mx.tasktrack.model.department;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.mx.tasktrack.model.employee.Employee;
 import jakarta.persistence.*;
@@ -35,6 +36,6 @@ public class Department {
         - Un departamento tiene muchos empleados (relación uno a muchos con Employee).
     */
     @OneToMany(mappedBy = "department")
-    @JsonManagedReference
+    @JsonIgnore
     private List<Employee> employees;
 }
