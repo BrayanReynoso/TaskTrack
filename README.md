@@ -33,7 +33,6 @@ TaskTrack es un sistema de gestión de empleados y proyectos desarrollado con Ja
     "error": false
   }
 ```
-
 - `GET /department`: Obtener la lista de departamentos.
   **Ejemplo de Respuesta:**
  ```json
