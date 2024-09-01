@@ -9,8 +9,7 @@ TaskTrack es un sistema de gestión de empleados y proyectos desarrollado con Ja
 ### Empleados
 - `GET /employees`: Obtener la lista de empleados.
   **Ejemplo de Respuesta:**
-  ```json
-{
+  ```json {
     "data": [
         {
             "id": 1,
