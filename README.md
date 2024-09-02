@@ -5,6 +5,50 @@ TaskTrack es un sistema de gestión de empleados y proyectos desarrollado con Ja
 - Gestión de departamentos: CRUD para organizar empleados en departamentos.
 - Gestión de proyectos: CRUD para gestionar los proyectos activos y finalizados.
 - Asignación de proyectos: Asignación de empleados a proyectos con roles específicos.
+## Requisitos del Sistema
+- Java 17 
+- Spring Boot v3.3.3
+- Maven
+- Base de datos MySQL
+- IDE recomendado: IntelliJ IDEA o Eclipse
+## Instalación y Configuración
+### Requisitos Previos
+
+Asegúrate de tener las siguientes herramientas instaladas en tu máquina:
+
+- [Java JDK 17](https://www.oracle.com/java/technologies/javase-jdk17-downloads.html)
+- [Maven](https://maven.apache.org/download.cgi)
+- [Git](https://git-scm.com/downloads)
+
+### Clonar el Repositorio
+
+Clona el repositorio del proyecto usando Git:
+
+```bash
+git clone https://github.com/BrayanReynoso/TaskTrack.git
+cd TaskTrack
+```
+### Configuración del archivo `application.properties`
+
+Configura los detalles del entorno en el archivo `src/main/resources/application.properties`. A continuación, se muestra un ejemplo de configuración:
+
+```properties
+# Nombre de la aplicación
+spring.application.name=api-tasktrack
+
+# Configuración de la base de datos
+spring.datasource.url=jdbc:mysql://localhost:3306/TaskTrack?useSLL=false&serverTimeZone=UTC&useLegacyDateTimeCode=false&createDatabaseIfNotExist=true
+spring.datasource.username=username
+spring.datasource.password=password
+
+# Configuración de JPA e Hibernate
+spring.jpa.show-sql=true
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
+
+# URL base de la API
+API-URL=/api-TaskTrack
+```
 ## Endpoints API
 ### Empleados
 - `GET /employees/`: Obtener todos los empleados de la lista.
