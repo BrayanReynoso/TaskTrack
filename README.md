@@ -26,12 +26,83 @@ TaskTrack es un sistema de gestión de empleados y proyectos desarrollado con Ja
                 "description": "Tecnologías de la información",
                 "status": true
             }
+        },
+        {
+            "id": 2,
+            "firstName": "Mike",
+            "lastName": "Brown",
+            "email": "mike.brown@example.com",
+            "salary": 60000.0,
+            "hireDate": "2022-03-10T00:00:00.000+00:00",
+            "status": true,
+            "department": {
+                "id": 1,
+                "name": "IT",
+                "description": "Tecnologías de la información",
+                "status": true
+            }
         }
     ],
     "code": 200,
     "message": "OK",
     "error": false
   }
+
+- `POST /employees/register`: Registrar un nuevo empleado.
+  **Ejemplo de body:**
+  ```json
+  {
+    "firstName": "Mike",
+    "lastName": "Brown",
+    "email": "mike.brown@example.com",
+    "salary": 50000.0,
+    "hireDate": "2022-03-10",
+    "status": true,
+    "department": {
+        "id": 1
+    }
+  }
+
+- `PUT /employees/update`: Actualizar un nuevo empleado.
+  **Ejemplo de body:**
+  ```json
+  {
+    "id": 2,
+    "firstName": "Mike",
+    "lastName": "Brown",
+    "email": "mike.brown@example.com",
+    "salary": 50000.0,
+    "hireDate": "2022-03-10",
+    "status": true,
+    "department": {
+        "id": 1
+    }
+  }
+ - `DELETE /employees/status/john.doe@example.com`: Cambiar el status de un empleado.
+  **Ejemplo de Respuesta:**
+  ```json
+ {
+     "data": {
+         "id": 1,
+         "firstName": "John",
+         "lastName": "Doe",
+         "email": "john.doe@example.com",
+         "salary": 60000.0,
+         "hireDate": "2021-01-15T06:00:00.000+00:00",
+         "status": false,
+         "department": {
+             "id": 1,
+             "name": "IT",
+             "description": "Tecnologías de la información",
+             "status": true
+         }
+     },
+     "code": 200,
+     "message": "The employee's status has been updated",
+     "error": false
+ }
+```
+
 ### Departamentos
 - `GET /department`: Obtener la lista de departamentos.
   **Ejemplo de Respuesta:**
