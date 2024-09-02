@@ -16,8 +16,8 @@ TaskTrack es un sistema de gestión de empleados y proyectos desarrollado con Ja
 
 Asegúrate de tener las siguientes herramientas instaladas en tu máquina:
 
-- [Java JDK 17](https://www.oracle.com/java/technologies/javase-jdk17-downloads.html)
-- [Maven](https://maven.apache.org/download.cgi)
+- [Java JDK 17](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html)
+- [Maven](https://maven.apache.org/)
 - [Git](https://git-scm.com/downloads)
 
 ### Clonar el Repositorio
