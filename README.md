@@ -7,7 +7,7 @@ TaskTrack es un sistema de gestión de empleados y proyectos desarrollado con Ja
 - Asignación de proyectos: Asignación de empleados a proyectos con roles específicos.
 ## Endpoints API
 ### Empleados
-- `GET /employees`: Obtener la lista de empleados.
+- `GET /employees`: Obtener todos los empleados de la lista.
   **Ejemplo de Respuesta:**
   ```json
   {
@@ -47,6 +47,29 @@ TaskTrack es un sistema de gestión de empleados y proyectos desarrollado con Ja
     "message": "OK",
     "error": false
   }
+- `GET /employees/john.doe@example.com`: Obtener un solo empleado de la lista mediante el email.
+  **Ejemplo de Respuesta:**
+  ```json
+  {
+    "data": {
+        "id": 1,
+        "firstName": "John",
+        "lastName": "Doe",
+        "email": "john.doe@example.com",
+        "salary": 60000.0,
+        "hireDate": "2021-01-15T06:00:00.000+00:00",
+        "status": false,
+        "department": {
+            "id": 1,
+            "name": "IT",
+            "description": "Tecnologías de la información",
+            "status": true
+        }
+    },
+    "code": 200,
+    "message": "Employee found",
+    "error": false
+}
 
 - `POST /employees/register`: Registrar un nuevo empleado.
   **Ejemplo de body:**
