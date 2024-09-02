@@ -10,4 +10,6 @@ import java.util.Optional;
 public interface DepartmentRepository extends JpaRepository<Department, Long> {
     @Override
     Optional<Department> findById(Long id);
+
+    Optional<Department> getDepartmentByName(String name);
 }

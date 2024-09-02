@@ -11,5 +11,5 @@ public interface ProjectRepository extends JpaRepository<Project, Long> {
     @Override
     Optional<Project> findById(Long id);
 
-    Optional<Project> findByName(String name);
+    Optional<Project> findProjectByName(String name);
 }

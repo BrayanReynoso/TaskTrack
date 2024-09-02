@@ -1,7 +1,6 @@
 package com.mx.tasktrack.model.assignment;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.mx.tasktrack.model.employee.Employee;
 import com.mx.tasktrack.model.project.Project;
 import jakarta.persistence.*;
@@ -20,7 +19,7 @@ import java.util.Date;
 @Table(name = "assignment")
 public class Assignment {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @Column(nullable = false)
