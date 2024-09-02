@@ -7,7 +7,7 @@ TaskTrack es un sistema de gestión de empleados y proyectos desarrollado con Ja
 - Asignación de proyectos: Asignación de empleados a proyectos con roles específicos.
 ## Endpoints API
 ### Empleados
-- `GET /employees`: Obtener todos los empleados de la lista.
+- `GET /employees/`: Obtener todos los empleados de la lista.
   **Ejemplo de Respuesta:**
   ```json
   {
@@ -127,7 +127,7 @@ TaskTrack es un sistema de gestión de empleados y proyectos desarrollado con Ja
 ```
 
 ### Departamentos
-- `GET /department`: Obtener la lista de departamentos.
+- `GET /department/`: Obtener la lista de departamentos.
   **Ejemplo de Respuesta:**
   ```json
   {
@@ -197,7 +197,7 @@ TaskTrack es un sistema de gestión de empleados y proyectos desarrollado con Ja
 }
 ```
 ### Proyectos
-- `GET /project`: Obtener la lista de proyectos.
+- `GET /project/`: Obtener la lista de proyectos.
   **Ejemplo de Respuesta:**
 ```json
   {
@@ -205,11 +205,11 @@ TaskTrack es un sistema de gestión de empleados y proyectos desarrollado con Ja
         {
             "id": 1,
             "name": "Rediseño del sitio web",
-            "description": "Rediseño de la página web de la empresa",
+            "description": "Rediseño de la página web de la empresa.",
             "startDate": "2023-01-01T06:00:00.000+00:00",
             "endDate": "2023-06-01T06:00:00.000+00:00",
             "budget": 20000.0,
-            "status": true,
+            "status": false,
             "assignments": [
                 {
                     "id": 1,
@@ -223,12 +223,44 @@ TaskTrack es un sistema de gestión de empleados y proyectos desarrollado con Ja
                         "email": "john.doe@example.com",
                         "salary": 60000.0,
                         "hireDate": "2021-01-15T06:00:00.000+00:00",
+                        "status": false,
+                        "department": {
+                            "id": 1,
+                            "name": "IT",
+                            "description": "Tecnologías de la información",
+                            "status": false
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "name": "Aplicación móvil",
+            "description": "Desarrollo de nueva aplicación móvil.",
+            "startDate": "2022-05-01T06:00:00.000+00:00",
+            "endDate": "2022-12-31T06:00:00.000+00:00",
+            "budget": 40000.0,
+            "status": false,
+            "assignments": [
+                {
+                    "id": 2,
+                    "role": "Cloud Engineer",
+                    "assignmentDate": "2023-03-01T06:00:00.000+00:00",
+                    "status": true,
+                    "employee": {
+                        "id": 2,
+                        "firstName": "Mike",
+                        "lastName": "Brown",
+                        "email": "mike.brown@example.com",
+                        "salary": 80000.0,
+                        "hireDate": "2022-03-10T00:00:00.000+00:00",
                         "status": true,
                         "department": {
                             "id": 1,
                             "name": "IT",
                             "description": "Tecnologías de la información",
-                            "status": true
+                            "status": false
                         }
                     }
                 }
@@ -239,3 +271,290 @@ TaskTrack es un sistema de gestión de empleados y proyectos desarrollado con Ja
     "message": "OK",
     "error": false
 }
+
+```
+- `GET /project/id`: Obtener un proyecto de la lista.
+  **Ejemplo de Respuesta:**
+```json
+   {
+    "data": {
+        "id": 1,
+        "name": "Rediseño del sitio web",
+        "description": "Rediseño de la página web de la empresa.",
+        "startDate": "2023-01-01T06:00:00.000+00:00",
+        "endDate": "2023-06-01T06:00:00.000+00:00",
+        "budget": 20000.0,
+        "status": false,
+        "assignments": [
+            {
+                "id": 1,
+                "role": "UI/UX Designer",
+                "assignmentDate": "2023-01-05T06:00:00.000+00:00",
+                "status": true,
+                "employee": {
+                    "id": 1,
+                    "firstName": "John",
+                    "lastName": "Doe",
+                    "email": "john.doe@example.com",
+                    "salary": 60000.0,
+                    "hireDate": "2021-01-15T06:00:00.000+00:00",
+                    "status": false,
+                    "department": {
+                        "id": 1,
+                        "name": "IT",
+                        "description": "Tecnologías de la información",
+                        "status": false
+                    }
+                }
+            }
+        ]
+    },
+    "code": 200,
+    "message": "Project found",
+    "error": false
+  }
+```
+- `POST /project/register`: Registrar un nuevo proyecto.
+  **Ejemplo de Body:**
+```json
+   {
+    "name": "Aplicación móvil",
+    "description": "Desarrollo de nueva aplicación móvil.",
+    "startDate": "2022-05-01T06:00:00.000+00:00",
+    "endDate": "2022-12-31T06:00:00.000+00:00",
+    "budget": 50000.00,
+    "status": true
+    
+  }
+```
+- `PUT /project/update`: Actualizar un proyecto.
+  **Ejemplo de Body:**
+```json
+    {
+    "id": 2,
+    "name": "Aplicación móvil",
+    "description": "Desarrollo de nueva aplicación móvil.",
+    "startDate": "2022-05-01T06:00:00.000+00:00",
+    "endDate": "2022-12-31T06:00:00.000+00:00",
+    "budget": 40000.00,
+    "status": true
+    }
+```
+- `DELETE /project/status/id`: Cambiar el status de un proyecto.
+  **Ejemplo de Respuesta:**
+```json
+    {
+    "data": {
+        "id": 1,
+        "name": "Rediseño del sitio web",
+        "description": "Rediseño de la página web de la empresa.",
+        "startDate": "2023-01-01T06:00:00.000+00:00",
+        "endDate": "2023-06-01T06:00:00.000+00:00",
+        "budget": 20000.0,
+        "status": false,
+        "assignments": [
+            {
+                "id": 1,
+                "role": "UI/UX Designer",
+                "assignmentDate": "2023-01-05T06:00:00.000+00:00",
+                "status": true,
+                "employee": {
+                    "id": 1,
+                    "firstName": "John",
+                    "lastName": "Doe",
+                    "email": "john.doe@example.com",
+                    "salary": 60000.0,
+                    "hireDate": "2021-01-15T06:00:00.000+00:00",
+                    "status": false,
+                    "department": {
+                        "id": 1,
+                        "name": "IT",
+                        "description": "Tecnologías de la información",
+                        "status": false
+                    }
+                }
+            }
+        ]
+    },
+    "code": 200,
+    "message": "",
+    "error": false
+   }
+```
+### Asignaciones
+- `GET /asigment/`: Obtener la lista de proyectos.
+  **Ejemplo de Respuesta:**
+```json
+{
+    "data": [
+        {
+            "id": 1,
+            "name": "Rediseño del sitio web",
+            "description": "Rediseño de la página web de la empresa.",
+            "startDate": "2023-01-01T06:00:00.000+00:00",
+            "endDate": "2023-06-01T06:00:00.000+00:00",
+            "budget": 20000.0,
+            "status": false,
+            "assignments": [
+                {
+                    "id": 1,
+                    "role": "UI/UX Designer",
+                    "assignmentDate": "2023-01-05T06:00:00.000+00:00",
+                    "status": true,
+                    "employee": {
+                        "id": 1,
+                        "firstName": "John",
+                        "lastName": "Doe",
+                        "email": "john.doe@example.com",
+                        "salary": 60000.0,
+                        "hireDate": "2021-01-15T06:00:00.000+00:00",
+                        "status": false,
+                        "department": {
+                            "id": 1,
+                            "name": "IT",
+                            "description": "Tecnologías de la información",
+                            "status": false
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "name": "Aplicación móvil",
+            "description": "Desarrollo de nueva aplicación móvil.",
+            "startDate": "2022-05-01T06:00:00.000+00:00",
+            "endDate": "2022-12-31T06:00:00.000+00:00",
+            "budget": 40000.0,
+            "status": false,
+            "assignments": [
+                {
+                    "id": 2,
+                    "role": "Cloud Engineer",
+                    "assignmentDate": "2023-03-01T06:00:00.000+00:00",
+                    "status": true,
+                    "employee": {
+                        "id": 2,
+                        "firstName": "Mike",
+                        "lastName": "Brown",
+                        "email": "mike.brown@example.com",
+                        "salary": 80000.0,
+                        "hireDate": "2022-03-10T00:00:00.000+00:00",
+                        "status": true,
+                        "department": {
+                            "id": 1,
+                            "name": "IT",
+                            "description": "Tecnologías de la información",
+                            "status": false
+                        }
+                    }
+                }
+            ]
+        }
+    ],
+    "code": 200,
+    "message": "OK",
+    "error": false
+}
+```
+- `GET /assignment/id`: Obtener una asignacion de la lista mediante id.
+  **Ejemplo de Respuesta:**
+```json
+{
+    "data": {
+        "id": 1,
+        "name": "Rediseño del sitio web",
+        "description": "Rediseño de la página web de la empresa.",
+        "startDate": "2023-01-01T06:00:00.000+00:00",
+        "endDate": "2023-06-01T06:00:00.000+00:00",
+        "budget": 20000.0,
+        "status": false,
+        "assignments": [
+            {
+                "id": 1,
+                "role": "UI/UX Designer",
+                "assignmentDate": "2023-01-05T06:00:00.000+00:00",
+                "status": true,
+                "employee": {
+                    "id": 1,
+                    "firstName": "John",
+                    "lastName": "Doe",
+                    "email": "john.doe@example.com",
+                    "salary": 60000.0,
+                    "hireDate": "2021-01-15T06:00:00.000+00:00",
+                    "status": false,
+                    "department": {
+                        "id": 1,
+                        "name": "IT",
+                        "description": "Tecnologías de la información",
+                        "status": false
+                    }
+                }
+            }
+        ]
+    },
+    "code": 200,
+    "message": "Project found",
+    "error": false
+}
+```
+- `POST /assignment/register`: Registrar una nueva asignacion.
+  **Ejemplo de Body:**
+```json
+   {
+        "role": "Cloud Engineer",
+        "assignmentDate": "2023-01-05T06:00:00.000+00:00",
+        "status": true,
+        "employee": {
+            "id": 1
+        },
+        "department": {
+            "id": 1
+        }
+    }
+```
+- `PUT /assignment/update`: Actualizar una asignacion.
+  **Ejemplo de Body:**
+```json
+{
+    "id": 2,
+    "role": "Cloud Engineer",
+    "assignmentDate": "2023-03-01T06:00:00.000+00:00",
+    "status": true,
+    "employee": {
+        "id": 2   
+    },
+    "department": {
+        "id": 1
+    }
+}
+```
+- `DELETE /assignment/status/id`: Cambiar el status de una asignacion.
+  **Ejemplo de Respuesta:**
+  ```json
+  {
+    "data": {
+        "id": 1,
+        "role": "UI/UX Designer",
+        "assignmentDate": "2023-01-05T06:00:00.000+00:00",
+        "status": false,
+        "employee": {
+            "id": 1,
+            "firstName": "John",
+            "lastName": "Doe",
+            "email": "john.doe@example.com",
+            "salary": 60000.0,
+            "hireDate": "2021-01-15T06:00:00.000+00:00",
+            "status": false,
+            "department": {
+                "id": 1,
+                "name": "IT",
+                "description": "Tecnologías de la información",
+                "status": false
+            }
+        }
+    },
+    "code": 200,
+    "message": "The status change has been carried out correctly",
+    "error": false
+  }
