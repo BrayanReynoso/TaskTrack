@@ -69,7 +69,7 @@ TaskTrack es un sistema de gestión de empleados y proyectos desarrollado con Ja
     "code": 200,
     "message": "Employee found",
     "error": false
-}
+  }
 
 - `POST /employees/register`: Registrar un nuevo empleado.
   **Ejemplo de body:**
@@ -123,7 +123,7 @@ TaskTrack es un sistema de gestión de empleados y proyectos desarrollado con Ja
      "code": 200,
      "message": "The employee's status has been updated",
      "error": false
- }
+}
 ```
 
 ### Departamentos
@@ -141,7 +141,7 @@ TaskTrack es un sistema de gestión de empleados y proyectos desarrollado con Ja
       {
         "id": 2,
         "name": "RH",
-        "description": "Recursos humanos",
+        "description": "Recursos Humanos",
         "status": true
       }
     ],
@@ -149,6 +149,53 @@ TaskTrack es un sistema de gestión de empleados y proyectos desarrollado con Ja
     "message": "OK",
     "error": false
   }
+- `GET /department/id`: Obtener un departamento registrado mediante el id.
+  **Ejemplo de Respuesta:**
+  ```json
+  {
+    "data": {
+        "id": 1,
+        "name": "IT",
+        "description": "Tecnologías de la información",
+        "status": true
+    },
+    "code": 200,
+    "message": "Department found",
+    "error": false
+  }
+ - `POST /department/register`: Registrar un nuevo departamentos.
+  **Ejemplo de Body:**
+  ```json
+  {
+    "name": "HR",
+    "description": "Recursos Humanos",
+    "status": true
+  }
+```
+- `PUT /department/update`: Actualizar un departamento.
+  **Ejemplo de Body:**
+  ```json
+  {
+    "id": 2,
+    "name": "HR",
+    "description": "Recursos Humanos",
+    "status": false
+  }
+ - `DELETE /department/status/id`: Cambiar el status de un departamento mediante el id.
+  **Ejemplo de Respuesta:**
+  ```json
+  {
+    "data": {
+        "id": 1,
+        "name": "IT",
+        "description": "Tecnologías de la información",
+        "status": false
+    },
+    "code": 200,
+    "message": "The department status has been changed successfully",
+    "error": false
+}
+```
 ### Proyectos
 - `GET /project`: Obtener la lista de proyectos.
   **Ejemplo de Respuesta:**
